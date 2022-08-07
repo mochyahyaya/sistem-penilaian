@@ -45,6 +45,14 @@
                 </a>
             </li>
             <li class="nav-item">
+              <a href="{{route('admin/laporan-penilaian')}}" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                  Laporan Penilaian
+              </p>
+              </a>
+          </li>
+            <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon far fa-envelope"></i>
                 <p>
@@ -78,12 +86,12 @@
             <a href="{{route('student/LihatNilai')}}" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>
-                Lihat Nilai
+                Kegiatan & Nilai
             </p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{route('admin/penilaian')}}" class="nav-link">
+            <a href="{{route('student/profile')}}" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
             <p>
                 Profil

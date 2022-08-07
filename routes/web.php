@@ -5,10 +5,13 @@ use Illuminate\Support\Facades\Route;
 // Admin
 use App\Http\Controllers\Admin\Dashboard;
 use App\Http\Controllers\Admin\Penilaian;
+use App\Http\Controllers\Admin\LaporanPenilaian;
 use App\Http\Controllers\Admin\Student;
 
 //Student
 use App\Http\Controllers\Student\LihatNilai;
+use App\Http\Controllers\Student\Profile;
+use App\Http\Controllers\Student\StudentDashboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +40,10 @@ Route::prefix('admin')->group(function () {
     Route::post('penilaian-store', [Penilaian::class, 'store'])->name('admin/penilaianStore');
     Route::get('penilaian-edit/{id}', [Penilaian::class, 'edit']);
     Route::put('penilaian-update/{id}', [Penilaian::class, 'update'])->name('admin/penilaianUpdate');
+    
+    //Laporan Penilaian
+    Route::get('laporan-penilaian', [LaporanPenilaian::class, 'index'])->name('admin/laporan-penilaian');
+    Route::get('laporan-penilaian-fetch', [LaporanPenilaian::class, 'fetch'])->name('admin/laporanFetch');
 
     //Siswa
     Route::get('student', [Student::class, 'index'])->name('admin/student');
@@ -48,6 +55,12 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('student')->group(function () {
+    Route::get('dashboard', [StudentDashboard::class, 'index'])->name('student/dashboard');
+
     Route::get('lihat-nilai', [LihatNilai::class, 'index'])->name('student/LihatNilai');
-    // Route::get('lihat-profile', [Profile::class, 'index'])->name('student/LihatProfile');
+    Route::get('lihat-nilai-fetch', [LihatNilai::class, 'fetch'])->name('student/nilaiFetch');
+    Route::post('input-nilai', [LihatNilai::class, 'store'])->name('student/nilaiStore');
+
+    Route::get('lihat-profile', [Profile::class, 'index'])->name('student/profile');
+    Route::put('update-profile', [Profile::class, 'update'])->name('student/profileUpdate');
 });
