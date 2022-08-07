@@ -34,6 +34,7 @@
                   <thead>
                   <tr>
                     <th>#</th>
+                    <th>Tanggal</th>
                     <th>Nama Siswa</th>
                     <th>Ketepatan Waktu</th>
                     <th>Efisensi Kerja</th>
@@ -204,6 +205,7 @@
 
                         $('tbody').append('<tr>\
                             <td>' + parseFloat(key + 1) + '</td>\
+                            <td>' + moment(item.created_at).locale('id').format('LL') + '</td>\
                             <td>' + item.users.name + '</td>\
                             <td>' + item.time + '</td>\
                             <td>' + item.efficency + '</td>\
