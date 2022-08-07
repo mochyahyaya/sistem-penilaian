@@ -25,9 +25,9 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
+              {{-- <div class="card-header">
                 <button type="button" class="btn btn-block btn-primary btn-flat" data-toggle="modal" data-target="#modal-create">Tambah Data</button>
-              </div>
+              </div> --}}
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="table-penilaian" class="table table-bordered table-hover">
@@ -125,7 +125,7 @@
             <div class="modal-body">
                 <form action="">
                     <input type="hidden" name="nilai_id" id="nilai_id">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="name">Nama Siswa</label>
                         <select name="updateName" id="updateName" class="form-control">
                             <option value="" selected disabled >-- Pilih Siswa --</option>
@@ -133,7 +133,7 @@
                                 <option value="{{$value->id}}">{{$value->name}}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}} 
                     <div class="form-group">
                         <label for="time">Nilai Ketepatan Waktu</label>
                         <input type="text" class="form-control" id="updateTime" name="updateTime">
@@ -168,27 +168,10 @@
 @push('script')
 <script>
     $(document).ready( function () {
-        $('#table-penilaian').DataTable({
-            dom: 'Bfrtip',
-            buttons: [{
-                extend: 'pdf',
-                title: 'Laporan Penilaian Siswa Magang',
-                filename:'laporan_penilaian_siswa_magang',
-                }, {
-                extend: 'excel',
-                title: 'Laporan Penilaian Siswa Magang',
-                filename:'laporan_penilaian_siswa_magang',
-                }, {
-                extend: 'csv',
-                title: 'Laporan Penilaian Siswa Magang',
-                filename: 'laporan_penilaian_siswa_magangp',
-                }, {
-                extend: 'print',
-                title: 'Laporan Penilaian Siswa Magang',
-                filename: 'laporan_penilaian_siswa_magang',
-            }], 
-        });
-    } );
+        // $('#table-penilaian').DataTable({
+
+        // });
+    });
 
     $.ajaxSetup({
       headers: {
@@ -215,7 +198,10 @@
                             var grade = 'Cukup Baik'
                         } else if (mean >= 80 && mean <= 100) {
                             var grade = 'Baik'
+                        } else if (mean == 0) {
+                            var grade = 'Belum diinput'
                         }
+
                         $('tbody').append('<tr>\
                             <td>' + parseFloat(key + 1) + '</td>\
                             <td>' + item.users.name + '</td>\
@@ -230,26 +216,7 @@
                             </td>\
                         \</tr>');
                     });
-                    $('#table-penilaian').DataTable({
-                        dom: 'Bfrtip',
-                        buttons: [{
-                            extend: 'pdf',
-                            title: 'Laporan Penilaian Siswa Magang',
-                            filename:'laporan_penilaian_siswa_magang',
-                            }, {
-                            extend: 'excel',
-                            title: 'Laporan Penilaian Siswa Magang',
-                            filename:'laporan_penilaian_siswa_magang',
-                            }, {
-                            extend: 'csv',
-                            title: 'Laporan Penilaian Siswa Magang',
-                            filename: 'laporan_penilaian_siswa_magangp',
-                            }, {
-                            extend: 'print',
-                            title: 'Laporan Penilaian Siswa Magang',
-                            filename: 'laporan_penilaian_siswa_magang',
-                        }], 
-                    });
+                    $('#table-penilaian').DataTable();
                 }
             });
         }
@@ -343,7 +310,6 @@
                     icon: response.status,
                     title: response.message
                     })
-                        $('#updateName').val(response.nilai.user_id).trigger('change');
                         $('#updateTime').val(response.nilai.time);
                         $('#updateEfficency').val(response.nilai.efficency);
                         $('#updateProcedur').val(response.nilai.procedur);
@@ -378,9 +344,9 @@
             $('#table-penilaian tbody').empty();
         }
         var id = $('#nilai_id').val();
+        console.log(id);
 
         var data = {
-            'name': $('#updateName').val(),
             'time': $('#updateTime').val(),
             'efficency': $('#updateEfficency').val(),
             'tools': $('#updateTools').val(),

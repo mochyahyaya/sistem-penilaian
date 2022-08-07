@@ -100,7 +100,6 @@ class Penilaian extends Controller
             $data = Nilai::find($id);
             if($data)
             {
-                $data->user_id = $request['name'];
                 $data->time = $request['time'];
                 $data->efficency = $request['efficency'];
                 $data->procedur = $request['procedur'];
