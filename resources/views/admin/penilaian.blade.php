@@ -207,6 +207,7 @@
                             <td>' + parseFloat(key + 1) + '</td>\
                             <td>' + moment(item.created_at).locale('id').format('LL') + '</td>\
                             <td>' + item.users.name + '</td>\
+                            <td>' + item.activity + '</td>\
                             <td>' + item.time + '</td>\
                             <td>' + item.efficency + '</td>\
                             <td>' + item.procedur + '</td>\
