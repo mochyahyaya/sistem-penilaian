@@ -36,7 +36,7 @@
                     <th>Penguasaan Alat</th>
                     <th>Komunikasi</th>
                     <th>Total Nilai</th>
-                    {{-- <th>Grade</th> --}}
+                    <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -118,9 +118,6 @@
 @push('script')
 
 <script>
-$(document).ready(function () {
-  $('#table-nilai').DataTable();
-});
 $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -149,8 +146,8 @@ $(document).ready(function () {
                   <td>' + item.tools + '</td>\
                   <td>' + item.communication + '</td>\
                   <td>' + mean + '</td>\
-                  <td class="text-center"><button type="button" value="' + item.id + '" class="btn btn-warning edit_data">Edit</button>\
-                      <button type="button" value="' + item.id + '" class="btn btn-danger btn_delete">Hapus</button>\
+                  <td class="text-center"><button type="button" value="' + item.id + '" class="btn btn-sm btn-warning edit_data">Edit</button>\
+                      <button type="button" value="' + item.id + '" class="btn btn-sm btn-danger btn_delete">Hapus</button>\
                   </td>\
               \</tr>');
           });
@@ -315,9 +312,9 @@ $(document).ready(function () {
       $(document).on('click', '.btn_delete', function (e) {
         $('#table-nilai').DataTable().clear();
         $('#table-nilai').DataTable().destroy();
-        var find = $('#table-student tbody').find('tr');
+        var find = $('#table-nilai tbody').find('tr');
         if (find) {
-            $('#table-student tbody' ).empty();
+            $('#table-nilai tbody' ).empty();
         }
         e.preventDefault();
         var nilai = $(this).val();
@@ -333,7 +330,7 @@ $(document).ready(function () {
                 if (result.isConfirmed) {
                   $.ajax({
                     type: "DELETE",
-                    url: "input-nilai-delete/" + nilai_id,
+                    url: "input-nilai-delete/" + nilai,
                     dataType: "json",
                     success: function (response) {
                         console.log(response);

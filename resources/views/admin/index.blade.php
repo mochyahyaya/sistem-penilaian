@@ -28,7 +28,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{$student}}</h3>
 
                 <p>Siswa</p>
               </div>
@@ -43,7 +43,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>490</h3>
+                <h3>{{$nilai}}</h3>
 
                 <p>Penilaian</p>
               </div>

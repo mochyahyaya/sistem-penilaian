@@ -27,6 +27,7 @@ class Profile extends Controller
             $data->name = $request['name'];
             $data->email = $request['email'];
             $data->school = $request['school'];
+            $data->phone_number = $request['phone_number'];
             if($data->password == $request['password']) {
                 $data->password = $request['password'];
             } else {

@@ -45,6 +45,10 @@
                     <input type="text" class="form-control" id="school" name="school" value="{{$value->school}}">
                   </div>
                   <div class="form-group">
+                    <label for="school">Nomor HP</label>
+                    <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{$value->phone_number}}">
+                  </div>
+                  <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" value="{{$value->password}}">
                   </div>
