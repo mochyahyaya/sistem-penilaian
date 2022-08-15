@@ -36,6 +36,7 @@
                     <th>#</th>
                     <th>Tanggal</th>
                     <th>Nama Siswa</th>
+                    <th>Kegiatan</th>
                     <th>Ketepatan Waktu</th>
                     <th>Efisensi Kerja</th>
                     <th>Prosedur Kerja</th>

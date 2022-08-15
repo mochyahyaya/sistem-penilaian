@@ -70,4 +70,70 @@ class LihatNilai extends Controller
         }
         return response()->json($data);
     }
+
+    public function edit($id)
+    {
+        $nilai = Nilai::find($id);
+        //List user by user id
+        if($nilai)
+        {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data berhasil ditampilkan',
+                'nilai'=> $nilai,
+            ]);
+        }
+        else
+        {
+            return response()->json([
+                'status'=> 'error',
+                'message'=>'Data tidak ditemukan'
+            ]);
+        }
+    }
+
+    public function update($id, Request $request)
+    {
+        $data = $request->all();
+        $data = Nilai::find($id);
+        if($data)
+        {
+            $data->activity = $request['activity'];
+            $data->update();
+            $data = [
+                'data' => $data,
+                'status' => 'success',
+                'message' => 'Data berhasil diubah'
+            ];
+        }
+        else
+        { 
+            $data = [
+                'data' => $data,
+                'status' => 'error',
+                'message' => 'Gagal mengubah data'
+            ];
+        }
+        return response()->json($data);
+    }
+
+    public function destroy($id)
+    {
+        $nilai = Nilai::find($id);
+        if($nilai)
+        {
+            $nilai->delete();
+            return response()->json([
+                'status'=>'success',
+                'message'=>'Berhasil dihapus.'
+            ]);
+        }
+        else
+        {
+            return response()->json([
+                'status'=>'error',
+                'message'=>'Data tidak ditemukan.'
+            ]);
+        }
+    }
 }

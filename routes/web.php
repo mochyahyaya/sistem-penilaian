@@ -60,6 +60,9 @@ Route::prefix('student')->group(function () {
     Route::get('lihat-nilai', [LihatNilai::class, 'index'])->name('student/LihatNilai');
     Route::get('lihat-nilai-fetch', [LihatNilai::class, 'fetch'])->name('student/nilaiFetch');
     Route::post('input-nilai', [LihatNilai::class, 'store'])->name('student/nilaiStore');
+    Route::get('input-nilai-edit/{id}', [LihatNilai::class, 'edit']);
+    Route::put('input-nilai-update/{id}', [LihatNilai::class, 'update']);
+    Route::delete('input-nilai-delete/{id}', [LihatNilai::class, 'destroy']);
 
     Route::get('lihat-profile', [Profile::class, 'index'])->name('student/profile');
     Route::put('update-profile', [Profile::class, 'update'])->name('student/profileUpdate');
