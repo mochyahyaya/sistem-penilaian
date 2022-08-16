@@ -35,6 +35,7 @@
                   <tr>
                     <th>#</th>
                     <th>Nama Siswa</th>
+                    <th>Sekolah</th>
                     <th>Ketepatan Waktu</th>
                     <th>Efisensi Kerja</th>
                     <th>Prosedur Kerja</th>
@@ -79,6 +80,7 @@
                         $('tbody').append('<tr>\
                             <td>' + parseFloat(key + 1) + '</td>\
                             <td>' + item.name + '</td>\
+                            <td>' + item.school + '</td>\
                             <td>' + item.time + '</td>\
                             <td>' + item.efficency + '</td>\
                             <td>' + item.procedur + '</td>\

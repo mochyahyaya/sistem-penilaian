@@ -32,7 +32,7 @@ class LaporanPenilaian extends Controller
     {
         $laporan = DB::table('penilaian')
         ->select(DB::raw("
-            name,  
+            name, school,
             AVG(time) as time,
             AVG(efficency) as efficency,
             AVG(tools) as tools,
@@ -40,7 +40,7 @@ class LaporanPenilaian extends Controller
             AVG(communication) as communication
         "))
         ->join('users', 'penilaian.user_id', '=', 'users.id')
-        ->groupBy('name')
+        ->groupBy('name', 'school')
         ->orderBy('name', 'ASC')
         ->get();
 
